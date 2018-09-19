@@ -1,5 +1,11 @@
-<?php 
-include 'conexion/conexion.php';
+<?php
+//Valida si estas logeado en pagina de index login 
+
+// agerege estas dos linear.sopa s
+@session_start();
+if (isset($_SESSION['nick'])) {
+	header('location:inicio');
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,7 +34,7 @@ include 'conexion/conexion.php';
 		          <form action="login/index.php" method="post" autocomplete="off">
 		          	<div class="input-field">
 		          		<i class="material-icons prefix">perm_identity</i>
-		          		<input type="text" name="usuario" id="usuario" requiered autofocus>
+		          		<input type="text" name="usuario" id="usuario" requiered autofocus onblur="may(this.value, this.id)">
 		          		<label for="usuario">Usuario</label>
 		          	</div>
 
@@ -56,5 +62,6 @@ include 'conexion/conexion.php';
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   <script src="js/materialize.min.js"></script>
+  <script src="js/val_form.js"></script>
 </body>
 </html>
